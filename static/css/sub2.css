@@ -1,0 +1,137 @@
+/* SUB2 */
+#sub2 {
+  overflow: hidden;
+}
+
+.content_area {
+  padding-top: 20px;
+}
+
+.content_area .list_header p {
+  display: inline-block;
+}
+
+.content_area .list_header form input {
+  width: 100%;
+}
+
+.content_area .list_header ul {
+  display: flex;
+  font-size: 2em;
+  width: 10%;
+}
+
+.content_area .list_header ul li {
+  margin-left: 20px;
+}
+
+.content_area .list_header p {
+  font-size: 1.2em;
+}
+
+.content_area .list_content {
+  height: 68vh;
+  overflow: hidden;
+}
+
+.content_area .list_content a {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.content_area .list_content a b {
+  width: 40%;
+}
+
+.content_area .list_content a b img {
+  width: 75%;
+  height: 100%;
+  float: right;
+  padding: 5%;
+}
+
+.content_area .list_content .search {
+  overflow-y: scroll;
+  height: 100%;
+}
+.content_area .list_content .news {
+  width: 60%;
+  margin-right: 20px;
+}
+
+.content_area .list_content .news h4 {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.content_area .list_content img {
+  width: 30%;
+  padding: 2%;
+  object-fit: cover;
+  transition: 0.4s ease-in-out;
+}
+
+/* list_content scroll-bar */
+/* 스크롤바 전체 */
+.content_area .list_content .search::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background: #ddd;
+}
+
+/* 스크롤 막대 */
+.content_area .list_content .search::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #34945c;
+}
+
+button {
+  background: #3dad6b;
+  width: auto;
+  min-width: 80px;
+  border-radius: 5px;
+  padding: 15px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+button:hover {
+  background: #34945c;
+}
+
+input {
+  width: 50%;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 15px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .content_area .list_content {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .content_area .list_content .search {
+    overflow-y: visible;
+    height: auto;
+  }
+
+  article {
+    padding: 10px;
+  }
+}

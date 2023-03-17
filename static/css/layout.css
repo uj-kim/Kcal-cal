@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
+  background: #eee;
+  color: #333;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+}
+
+main {
+  width: 80%;
+}
+
+article {
+  background: #fff;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 30px 40px;
+  overflow: hidden;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+/* 테블릿 */
+@media (max-width: 1024px) {
+  * {
+    font-size: 14px;
+  }
+
+  body {
+    overflow: overlay;
+  }
+
+  #wrap {
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+
+  main {
+    width: 100%;
+    /* height: calc(100vh - 100px); */
+    height: auto;
+    margin-top: 100px;
+  }
+
+  section {
+    overflow-x: hidden;
+  }
+
+  #showimage {
+    display: none;
+  }
+}
+
+/* 소형 테블릿 */
+@media screen and (max-width: 768px) {
+}
+
+/* 모바일 */
+@media screen and (max-width: 640px) {
+}
+
+/* 최소 사이즈 처리 */
+@media screen and (max-width: 480px) {
+  #wrap {
+    min-width: 320px;
+  }
+}

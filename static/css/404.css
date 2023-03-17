@@ -1,0 +1,25 @@
+body {
+  width: 90vw;
+  height: 90vh;
+  margin: 5vh auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
+}
+
+.home {
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 5px;
+  display: block;
+  background: #3dad6b;
+  color: #fff;
+  line-height: 50px;
+}

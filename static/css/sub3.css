@@ -1,0 +1,59 @@
+/* SUB3 */
+.graph {
+  padding: 2% 0;
+}
+
+#myChart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+fieldset {
+  display: flex;
+  align-items: center;
+  margin: 30px auto 0;
+  width: 530px;
+}
+
+button {
+  background: #3dad6b;
+  width: auto;
+  max-width: 530px;
+  border-radius: 5px;
+  padding: 15px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+button:hover {
+  background: #34945c;
+}
+
+.inputWeight {
+  width: 50%;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  article {
+    margin: 15px;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,360 @@
+article {
+  background: #fff;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 30px 40px;
+  padding-top: 15px;
+  overflow: hidden;
+}
+
+section {
+  display: flex;
+}
+
+.profile1 .modify {
+  position: relative;
+  margin-right: 80px;
+}
+
+.profilePhoto h3 {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #34945c;
+  margin-bottom: 15px;
+}
+
+.profilePhoto img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 1px solid #ccc;
+  margin: 40px auto;
+}
+
+.profilePhoto #fileUpload {
+  text-align: center;
+}
+
+#fileUploadBtn {
+  background: #3dad6b;
+  width: 100%;
+  border-radius: 5px;
+  padding: 15px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#fileUploadBtn:hover {
+  background: #34945c;
+}
+
+form {
+  margin-left: 30px;
+  width: 100%;
+}
+
+.myTitle h3 {
+  font-size: 2em;
+  margin: 20px;
+  padding: 30px 0px 0px 40px;
+}
+
+.profile1 {
+  width: 100%;
+}
+
+.profile1 img {
+  width: 300px;
+  height: 300px;
+}
+
+#userInfo {
+  margin-right: 80px;
+}
+
+.inputBox {
+  width: 100%;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 10px;
+  margin: 0px 0px 10px 0px;
+}
+
+.inputBox:focus {
+  border: 2px solid #34945c;
+  background-color: #f7faf9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+#editBtn,
+#delBtn {
+  text-transform: uppercase;
+  outline: 0;
+  background: #3dad6b;
+  width: 45%;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+#editBtn:hover,
+#delBtn:hover,
+#editBtn:active,
+#delBtn:active,
+#editBtn:focus,
+#delBtn:focus {
+  background: #34945c;
+  text-decoration: underline;
+}
+
+img {
+  height: 100%;
+}
+
+h3 {
+  font-size: 2em;
+}
+/* 
+.profile1 div {
+  display: flex;
+  flex-direction: column;
+} */
+
+legend {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #34945c;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 10pt;
+  color: #777;
+}
+
+.oneline {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
+/* #accountInformation input {
+  width: 200px;
+  margin-right: auto;
+  margin-left: auto;
+} */
+
+.inputWrapper {
+  margin-left: 20px;
+  margin-right: 30px;
+}
+
+.btnArea {
+  /* display: flex;
+  justify-content: center;
+  position: relative; */
+  /* float: right; */
+}
+
+#editBtn {
+  margin-right: 50px;
+}
+
+#userid,
+#nickname {
+  margin-right: 37px;
+}
+
+.profile1 form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_mypage {
+  width: 80%;
+}
+
+.filebox {
+  display: flex;
+}
+
+.filebox .upload-name {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  width: 68%;
+  color: #999;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 3px;
+  width: 110px;
+  text-align: center;
+}
+
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.photo_hr {
+  display: none;
+}
+
+@media screen and (max-width: 1680px) {
+  .profile1 {
+    margin: 0;
+    padding: 0 40px;
+  }
+
+  .profile1 form {
+    flex-direction: column;
+  }
+
+  .profile1 img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profilePhoto img {
+    margin: 0 20px;
+  }
+
+  .photo_hr {
+    display: block;
+    margin-right: 80px;
+  }
+
+  .filebox {
+    width: 50%;
+    margin: 20px 20px 0;
+  }
+
+  #fileUploadBtn {
+    width: 20%;
+    bottom: 0;
+    right: 0;
+  }
+
+  .word {
+    display: none;
+  }
+
+  .form_mypage {
+    position: relative;
+  }
+
+  #userInfo {
+    position: relative;
+  }
+
+  .btnArea {
+    position: absolute;
+    bottom: 2%;
+    right: 0;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #editBtn,
+  #delBtn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .myTitle h3 {
+    margin: 0;
+  }
+
+  .filebox {
+    width: 80%;
+  }
+
+  #fileUploadBtn {
+    width: 45%;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  .profile1 {
+    padding: 20px;
+  }
+
+  .profile1 img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .btnArea {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  hr {
+    margin-top: 30px;
+  }
+
+  #height,
+  #age {
+    min-width: 100px;
+  }
+
+  form,
+  .profile1 .modify,
+  #userInfo {
+    margin: 0;
+  }
+
+  .photo_hr {
+    margin-right: 0;
+  }
+
+  .profile1 .modify .profilePhoto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
