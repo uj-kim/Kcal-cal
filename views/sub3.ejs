@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>건강관리 | Kcal-cal</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="/static/img/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- css: reset -->
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <!-- css: header -->
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <!-- css : layout -->
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <!-- css : sub3 -->
+    <link rel="stylesheet" href="/static/css/sub3.css" />
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <!-- xelcon -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
+    <!-- Chart js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <%- include('header.ejs') %>
+
+      <!-- main content -->
+      <main>
+        <section>
+          <h2 class="hidden">Main Content</h2>
+          <article>
+            <h3><%= nickname %>님의 건강상태 한눈에 보기</h3>
+            <p class="chartUser" style="display: none"><%= userid %></p>
+
+            <div class="graph">
+              <canvas id="myChart"></canvas>
+            </div>
+
+            <fieldset>
+              <input
+                type="number"
+                class="inputWeight"
+                onkeydown="pressEnter(event)"
+              />
+              <button type="button" onclick="addWeight()">
+                몸무게 수정하기
+              </button>
+            </fieldset>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!-- header js -->
+    <script src="/static/js/header.js"></script>
+
+    <script>
+      const ctx = document.getElementById("myChart");
+      console.log("<%= userweight.length %>");
+
+      //chart data set
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            // result[i].date,
+                <% for (let i = userweight.length -1; i >= 0; i--) { %>
+                "<%= userweight[i].date.toLocaleDateString() %>",
+                <% } %>
+          ], //가로축, 날짜/시간 값 들어갈 곳
+          datasets: [
+            {
+              label: "몸무게", //hover시 데이터값 이름과 상단에 보일 데이터 이름
+              data: [
+                <% for (let i = userweight.length -1; i >= 0; i--) { %>
+                "<%= userweight[i].weight %>",
+                <% } %>
+              ], // 세로축, 몸무게 값.
+              borderWidth: 3, //선/원 두께
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false, //true: 0 - 100그래프     false: 최저값 - 최고값
+            },
+          },
+        },
+      });
+
+      function addWeight() {
+        console.log('누름');
+        const inputWeight = document.querySelector('.inputWeight')
+        const chartUser = document.querySelector('.chartUser')
+        console.log(chartUser.textContent);
+        console.log(inputWeight.value);
+
+        if (inputWeight.value.trim() == '') {
+          alert("몸무게를 입력해주세요.");
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/sub3/weight",
+          data: {
+            userid: chartUser.textContent,
+            weight: inputWeight.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            if (data) {
+              console.log(data);
+              alert(
+                `회원님의 몸무게가 성공적으로 변경되었습니다!`
+              );
+              document.location.href = "/sub3";
+              return;
+            } else {
+              return false;
+            }
+          });
+      }
+
+      function pressEnter(e) {
+        if (e.key === "Enter") {
+          addWeight()
+        }
+      }
+    </script>
+    <!-- <script src="/static/js/sub3.js"></script> -->
+  </body>
+</html>

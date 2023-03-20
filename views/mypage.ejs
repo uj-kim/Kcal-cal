@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 | Kcal-cal</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="/static/img/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- css: reset -->
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <!-- css: header -->
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <!-- css : layout -->
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <!-- css : mypage -->
+    <link rel="stylesheet" href="/static/css/mypage.css" />
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <!-- xelcon -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div id="skipNav">
+        <a href="#content">본문 바로가기</a>
+        <a href="#gnb">글로벌 네비게이션 바로가기</a>
+      </div>
+
+      <header id="headerArea">
+        <div class="headerInner">
+          <h1 class="logo"><a href="/">Kcal-cal</a></h1>
+          <a href="#" class="menu_ham">
+            <span>메뉴열고닫기</span>
+          </a>
+
+          <nav id="gnb">
+            <h2 class="hidden">Navigation</h2>
+            <div class="profile_img">
+              <% if (userprofile) { %>
+              <img src="<%= userprofile %>" alt="개인 프로필 이미지" />
+              <% } else { %>
+              <img src="../static/img/porfile.jpg" alt="기본 프로필 이미지" />
+              <% } %>
+              <ul>
+                <li><a href="/logout">로그아웃</a></li>
+                <li><a href="/mypage">정보수정</a></li>
+              </ul>
+            </div>
+            <ul>
+              <li>
+                <h3>
+                  <b class="top-curve"></b>
+                  <b class="bottom-curve"></b>
+                  <a href="/main"><i class="fas fa-fire"></i>칼로리 체크</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <b class="top-curve"></b>
+                  <b class="bottom-curve"></b>
+                  <a href="/sub1"><i class="fas fa-calculator"></i>BMI 측정</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <b class="top-curve"></b>
+                  <b class="bottom-curve"></b>
+                  <a href="/sub2"><i class="fas fa-running"></i>건강 정보</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <b class="top-curve"></b>
+                  <b class="bottom-curve"></b>
+                  <a href="/sub3"><i class="far fa-meh-blank"></i>건강 상태</a>
+                </h3>
+              </li>
+            </ul>
+          </nav>
+          <a href="#" class="menu_ham">
+            <!-- <span>메뉴열고닫기</span> -->
+          </a>
+        </div>
+      </header>
+      <!-- main content -->
+      <main>
+        <h2 class="hidden">Main Content</h2>
+        <div class="myTitle">
+          <h3><%= nickname %>님의 마이페이지</h3>
+        </div>
+        <section>
+          <article class="profile1">
+            <form name="form_mypage">
+              <!-- <label for="nickname" name="info" id="nickname"></label> -->
+              <div class="modify">
+                <div class="profilePhoto">
+                  <h3 class="word">📷 ProfilePhoto</h3>
+                  <% if (userprofile) { %>
+                  <img src="<%= userprofile %>" alt="개인 프로필 이미지" />
+                  <% } else { %>
+                  <img
+                    src="../static/img/porfile.jpg"
+                    alt="기본 프로필 이미지"
+                  />
+                  <% } %>
+                  <div class="filebox">
+                    <input
+                      class="upload-name"
+                      value="첨부파일"
+                      placeholder="첨부파일"
+                      disabled
+                    />
+                    <label for="profileUpload">파일찾기</label>
+                    <input
+                      type="file"
+                      name="profileUpload"
+                      id="profileUpload"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onclick="fileUpload();"
+                    id="fileUploadBtn"
+                  >
+                    사진수정
+                  </button>
+                </div>
+              </div>
+              <hr class="photo_hr" />
+              <div id="userInfo">
+                <fieldset id="accountInformation">
+                  <legend>🔒 Account Information</legend>
+                  <!-- id값 수정 불가 -->
+                  <div class="oneline">
+                    <div class="inputWrapper">
+                      <label for="userid">아이디</label>
+                      <input
+                        type="text"
+                        class="inputBox"
+                        id="userid"
+                        readonly
+                        disabled
+                        placeholder="userID"
+                        value="<%= userid %>"
+                      />
+                    </div>
+                    <!-- <label for=""></label> -->
+
+                    <!-- nickname 수정 가능 -->
+                    <div class="inputWrapper">
+                      <label for="nickname">닉네임</label>
+                      <input
+                        type="text"
+                        class="inputBox"
+                        id="nickname"
+                        placeholder="Nickname"
+                        value="<%= nickname %>"
+                        onkeyup="javascript:fnChkByte(this, '16')"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="oneline">
+                    <!-- PW 수정가능 & 일치 확인-->
+                    <div class="inputWrapper">
+                      <label for="userpw">비밀번호 설정</label>
+                      <input
+                        type="password"
+                        class="inputBox"
+                        id="userpw"
+                        placeholder="userPW"
+                        value="<%= userpw %>"
+                        required
+                      />
+                    </div>
+
+                    <div class="inputWrapper">
+                      <label for="checkPw">비밀번호 확인</label>
+                      <input
+                        type="password"
+                        class="inputBox"
+                        id="checkpw"
+                        placeholder="checkPW"
+                        required
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+                <hr />
+                <fieldset id="Email">
+                  <legend>📧 Email</legend>
+                  <!-- email 수정 불가 -->
+                  <div class="oneline">
+                    <div class="inputWrapper">
+                      <label for="useremail">등록된 이메일</label>
+                      <input
+                        type="email"
+                        class="inputBox"
+                        id="useremail"
+                        readonly
+                        disabled
+                        placeholder="userEmail"
+                        value="<%= useremail %>"
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+                <hr />
+                <fieldset id="personalInformation">
+                  <legend>💬 Personal Information</legend>
+                  <div class="oneline">
+                    <!-- 키 -->
+                    <div class="inputWrapper">
+                      <label for="height">키</label>
+                      <input
+                        type="number"
+                        class="inputBox"
+                        id="height"
+                        min="100"
+                        max="230"
+                        placeholder="height"
+                        value="<%= height %>"
+                        required
+                      />
+                    </div>
+
+                    <!-- 나이 -->
+                    <div class="inputWrapper">
+                      <label for="age">나이</label>
+                      <input
+                        type="number"
+                        class="inputBox"
+                        id="age"
+                        min="14"
+                        max="99"
+                        placeholder="age"
+                        value="<%= age %>"
+                        required
+                      />
+                    </div>
+
+                    <!-- 성별 -->
+                    <div class="inputWrapper">
+                      <label for="gender">성별</label>
+                      <input
+                        type="text"
+                        class="inputBox"
+                        id="gender"
+                        placeholder="gender(M/F)"
+                        readonly
+                        disabled
+                        value="<%= gender %>"
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="btnArea">
+                  <button type="button" id="editBtn" onclick="editInfo();">
+                    정보수정
+                  </button>
+                  <button type="button" id="delBtn" onclick="delInfo();">
+                    회원탈퇴
+                  </button>
+                </div>
+              </div>
+            </form>
+          </article>
+          <!-- <article class="profile2">
+          <form>
+            <label for="age" id="age">나이</label>
+            <input type="number">
+            <label for="weight">몸무게</label>
+            <input type="text">
+            <button>수정</button>
+          </form>
+        </article> -->
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/js/mypage.js"></script>
+    <script src="/static/js/header.js"></script>
+  </body>
+</html>
