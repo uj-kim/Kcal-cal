@@ -9,7 +9,7 @@ document.querySelector("#domainList").addEventListener("change", (e) => {
     document.querySelector("#domainTxt").value = e.target.value;
     document.getElementById("domainTxt").setAttribute("disabled", true);
   } else {
-    //직접입력하고 input disabled
+    //직접입력하고 input disabled X
     document.querySelector("#domainTxt").value = "";
     document.getElementById("domainTxt").removeAttribute("disabled");
   }

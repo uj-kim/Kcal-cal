@@ -224,7 +224,7 @@ exports.findPw = (req, res) => {
     },
   }).then((result) => {
     console.log("이메일", result);
-    // console.log("받은이메일", req.body.useremail);
+    console.log("받은이메일", req.body.useremail);
     // console.log("받은이메일2", result.dataValues.useremail);
     if (result === null) {
       return res.send(false);
@@ -232,10 +232,10 @@ exports.findPw = (req, res) => {
       const mailPoster = nodemailer.createTransport({
         service: "Naver",
         host: "smtp.naver.com",
-        port: 587,
+        port: 465,
         auth: {
-          user: "kcal-cal2@naver.com", // 우리 이메일 주소
-          pass: "!qn2wjd#gus", // 우리 이메일 비밀번호
+          user: "kcal_cal@naver.com", // 우리 이메일 주소
+          pass: "kkccaall123!", // 우리 이메일 비밀번호
         },
       });
       // let authNum = Math.random().toString().slice(2, 8);
@@ -244,7 +244,7 @@ exports.findPw = (req, res) => {
       //   .toString();
 
       const mailOpt = {
-        from: "kcal-cal2@naver.com",
+        from: "kcal_cal@naver.com",
         to: `${result.dataValues.useremail}`,
         subject: "[kcalcal] 이메일 인증을 통한 비밀번호 찾기",
         html:
