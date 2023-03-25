@@ -114,7 +114,7 @@ $(document).ready(function () {
     h: 200,
   };
 
-  $("#input_file").setPreview(opt);
+  $("#profileUpload").setPreview(opt);
 });
 
 const form = document.forms["form_mypage"];
@@ -217,6 +217,7 @@ function editInfo() {
       gender: form.gender.value,
       age: form.age.value,
       height: form.height.value,
+      userprofile: form.profileUpload.path,
     },
   })
     .then((res) => {

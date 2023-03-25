@@ -38,6 +38,8 @@ exports.main = (req, res) => {
         console.log("로그인 유저 성별", result[0].gender);
         console.log("로그인 유저 키", result[0].height);
         console.log("로그인 유저 몸무게", result[0].weight);
+        console.log("로그인 유저 프로필", result[0].userprofile);
+
         res.render("main", {
           activeMenu: "main",
           result: result[0],
@@ -384,6 +386,7 @@ exports.profileUploads = (req, res) => {
 };
 
 exports.mypageEdit = (req, res) => {
+  const userSession = req.session.user;
   models.User.update(
     {
       userid: req.body.userid,
@@ -393,6 +396,7 @@ exports.mypageEdit = (req, res) => {
       gender: req.body.gender,
       age: req.body.age,
       height: req.body.height,
+      userprofile: userSession.userprofile,
     },
     {
       where: {
@@ -416,6 +420,7 @@ exports.mypageEdit = (req, res) => {
           gender: req.body.gender,
           age: req.body.age,
           height: req.body.height,
+          userprofile: userSession.userprofile,
         };
       }
       console.log("후", req.session.user);

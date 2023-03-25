@@ -112,9 +112,14 @@
                 <div class="profilePhoto">
                   <h3 class="word">📷 ProfilePhoto</h3>
                   <% if (userprofile) { %>
-                  <img src="<%= userprofile %>" alt="개인 프로필 이미지" />
+                  <img
+                    id="img_preview"
+                    src="<%= userprofile %>"
+                    alt="개인 프로필 이미지"
+                  />
                   <% } else { %>
                   <img
+                    id="img_preview"
                     src="../static/img/porfile.jpg"
                     alt="기본 프로필 이미지"
                   />
