@@ -114,7 +114,7 @@ $(document).ready(function () {
     h: 200,
   };
 
-  $("#input_file").setPreview(opt);
+  $("#profileUpload").setPreview(opt);
 });
 
 const form = document.forms["form_mypage"];
