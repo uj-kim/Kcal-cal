@@ -2,6 +2,7 @@
 section {
   height: 96vh;
   position: relative;
+  overflow: hidden;
 }
 
 section h3 {
@@ -16,6 +17,7 @@ section h4 {
 .BMI {
   display: flex;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .BMI h4 {
@@ -30,14 +32,16 @@ section h4 {
   border-radius: 20px;
   padding: 30px 40px;
   width: 40%;
-  height: 420px;
+  /* height: 100%; */
+  /* max-height: 420px; */
+  height: 350px;
   margin-right: 20px;
   overflow: hidden;
 }
 
 .BMI .info {
   width: 60%;
-  height: 420px;
+  height: 350px;
   background: rgb(245, 245, 245);
   border-radius: 20px;
   padding: 30px 40px;
@@ -52,6 +56,7 @@ section h4 {
   position: relative;
   left: 0;
   margin: 0 60px;
+  max-height: 170px;
 }
 
 #result li {
@@ -91,6 +96,7 @@ section h4 {
 .BMIgraph .graphResult {
   text-align: center;
   padding: 20px;
+  padding-top: 0;
   font-size: 1.2em;
   font-weight: 600;
 }
@@ -109,7 +115,7 @@ section h4 {
 
 .result {
   text-align: center;
-  margin: 40px;
+  margin: 10px;
 }
 
 #result {
@@ -174,6 +180,9 @@ section h4 {
 }
 
 @media screen and (max-width: 768px) {
+  section {
+    overflow: auto;
+  }
   article {
     margin: 0;
     padding: 20px;
@@ -182,9 +191,12 @@ section h4 {
   section h3 {
     margin: 0;
   }
-
   .BMIgraph {
     margin: 20px;
+  }
+
+  .BMIgraph .graphResult {
+    font-size: 1em;
   }
 
   .BMI .form {
@@ -194,5 +206,8 @@ section h4 {
 
   .BMI .info {
     display: none;
+  }
+  .graph li label {
+    width: 23%;
   }
 }
