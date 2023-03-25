@@ -217,6 +217,7 @@ function editInfo() {
       gender: form.gender.value,
       age: form.age.value,
       height: form.height.value,
+      userprofile: form.profileUpload.path,
     },
   })
     .then((res) => {
