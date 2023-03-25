@@ -303,6 +303,8 @@ main .part2 {
 .content-box {
   display: flex;
   flex-direction: column;
+  /* height: 100%; */
+  max-width: 170px;
 }
 
 .content-box .recommend-text {
@@ -310,6 +312,8 @@ main .part2 {
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: auto;
+  max-width: 170px;
 }
 
 .carbs-text {
@@ -347,11 +351,11 @@ main .part2 {
 
 .pie {
   /* --d ==== 채워지는 원 크기 */
-  --b: 30px;
+  --b: 22px;
   --c: darkred;
 
   /* --w ===== 전체 원 크기 */
-  --w: 200px;
+  --w: 150px;
 
   width: var(--w);
   aspect-ratio: 1;
@@ -367,9 +371,10 @@ main .part2 {
 }
 
 .inside-pie {
-  --w: 200px;
+  --w: 150px;
 
   width: var(--w);
+
   aspect-ratio: 1;
   position: relative;
   display: inline-grid;
@@ -535,6 +540,9 @@ img {
   article.gauge p {
     font-size: 1.8em;
   }
+  main .part2 article {
+    height: 90%;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -547,6 +555,11 @@ img {
   main .part1 {
     width: 100%;
     margin: 0 auto;
+  }
+  main .part2 article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   #gnb {
@@ -579,6 +592,11 @@ img {
 @media screen and (max-width: 720px) {
   .part2 .circle {
     width: 100%;
+  }
+  main .part2 article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
