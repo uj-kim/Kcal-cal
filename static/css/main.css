@@ -1,6 +1,7 @@
 main {
   display: flex;
   justify-content: space-around;
+
   /* 탄단지 테마 색상 */
   --carbs: red;
   --protein: green;
@@ -528,6 +529,9 @@ img {
 }
 
 @media screen and (max-width: 1470px) {
+  /* article {
+    overflow: hidden;
+  } */
   main .part1 .eat {
     display: none;
   }
@@ -542,6 +546,7 @@ img {
   }
   main .part2 article {
     height: 90%;
+    /* overflow: auto; */
   }
 }
 
