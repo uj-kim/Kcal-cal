@@ -1,9 +1,7 @@
 const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
 const nodemailer = require("nodemailer");
-// const ejs = require("ejs");
-// const { callbackPromise } = require("nodemailer/lib/shared");
-// const { renderFile } = require("ejs");
+
 
 exports.index = (req, res) => {
   const userSession = req.session.user;
@@ -227,27 +225,23 @@ exports.findPw = (req, res) => {
   }).then((result) => {
     console.log("이메일", result);
     console.log("받은이메일", req.body.useremail);
-    // console.log("받은이메일2", result.dataValues.useremail);
     if (result === null) {
       return res.send(false);
     } else {
       const mailPoster = nodemailer.createTransport({
-        service: "Naver",
-        host: "smtp.naver.com",
+        service: "", // Naver, Google,,,
+        host: "", // ex) smtp.naver.com
         port: 465,
         auth: {
-          user: "kcal_cal@naver.com", // 우리 이메일 주소
-          pass: "kkccaall123!", // 우리 이메일 비밀번호
+          user: "", // 발송 이메일 주소
+          pass: "", // 발송 이메일 계정 비밀번호
         },
       });
-      // let authNum = Math.random().toString().slice(2, 8);
-      // const content = ejs
-      //   .renderFile("./views/authMail.ejs", { authcode: authNum })
-      //   .toString();
+   
 
       const mailOpt = {
-        from: "kcal_cal@naver.com",
-        to: `${result.dataValues.useremail}`,
+        from: "", // 발송 이메일 주소
+        to: `${result.dataValues.useremail}`, //수신 이메일 주소
         subject: "[kcalcal] 이메일 인증을 통한 비밀번호 찾기",
         html:
           ' <p style="color: black"><b>안녕하세요, Kcal-cal 입니다.<br> 회원님의 비밀번호는</b></p><br>' +
@@ -296,8 +290,6 @@ exports.signupCheckId = (req, res) => {
       userid: req.body.userid,
     },
   }).then((result) => {
-    // console.log(req.body);
-    // console.log(result);
     if (result === null) {
       res.send(true);
     } else {
@@ -312,8 +304,6 @@ exports.signupCheckEmail = (req, res) => {
       useremail: req.body.useremail,
     },
   }).then((result) => {
-    // console.log(req.body);
-    // console.log(result);
     if (result === null) {
       res.send(true);
     } else {
@@ -350,8 +340,6 @@ exports.mypage = (req, res) => {
 
 exports.profileUploads = (req, res) => {
   const userSession = req.session.user;
-  console.log("응", req.file);
-  console.log("애", req.file.path);
   models.User.update(
     {
       userprofile: req.file.path,
@@ -435,7 +423,6 @@ exports.myweightEdit = (req, res) => {
     {
       userid: req.body.userid,
       weight: req.body.weight,
-      // date: req.body.date, // 자동으로 찍히게 해서 빼도 될지 의문
     },
     {
       where: {
